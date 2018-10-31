@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import repositories.PersonRepository;
 
-/**
- * Created by nferreyra on 30/10/18.
- */
 @Controller
 @RequestMapping(path="person")
 public class PersonController {
