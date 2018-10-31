@@ -1,22 +1,22 @@
-package controllers;
+package peoplepictures.controllers;
 
-import model.Person;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import repositories.PersonRepository;
+import peoplepictures.model.Person;
+import peoplepictures.repositories.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path="person")
 public class PersonController {
-    @Autowired
-    private PersonRepository personRepository;
+    //@Autowired
+    //private PersonRepository personRepository;
 
+    /*
     @GetMapping(path="/add") // Map ONLY GET Requests
-    public @ResponseBody String addNewUser (
+    public @ResponseBody String addNewPerson (
             @RequestParam String name,
             @RequestParam String role,
             @RequestParam String city) {
@@ -30,5 +30,14 @@ public class PersonController {
 
         personRepository.save(n);
         return "Saved";
+    }
+    */
+
+    @GetMapping("/person")
+    @ResponseBody
+    public Person getPerson() {
+        Person person = new Person();
+        person.setName("José");
+        return person;
     }
 }
