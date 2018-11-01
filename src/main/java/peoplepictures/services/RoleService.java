@@ -9,7 +9,7 @@ import peoplepictures.repositories.RoleRepository;
 import java.io.IOException;
 
 @Service
-public class RolesService {
+public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
     @Autowired

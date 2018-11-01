@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-public class PeopleService {
+public class PersonService {
 
     @Autowired
     private PersonRepository personRepository;

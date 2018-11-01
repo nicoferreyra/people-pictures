@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import peoplepictures.services.PeopleService;
+import peoplepictures.services.PersonService;
 
 import java.io.IOException;
 
@@ -16,14 +16,14 @@ import java.io.IOException;
 public class PersonController {
 
     @Autowired
-    private PeopleService peopleService;
+    private PersonService personService;
 
     @GetMapping("/people")
     @ResponseBody
     public ResponseEntity getPeople(){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.peopleService.read());
+                .body(this.personService.read());
     }
 
     @GetMapping("/people/roles/{roleName}")
@@ -32,7 +32,7 @@ public class PersonController {
             @PathVariable("roleName") String roleName) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.peopleService.readByRole(roleName));
+                .body(this.personService.readByRole(roleName));
     }
 
     @GetMapping("/people/cities/{cityName}")
@@ -41,7 +41,7 @@ public class PersonController {
             @PathVariable("cityName") String cityName) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.peopleService.readByCity(cityName));
+                .body(this.personService.readByCity(cityName));
     }
 
     @GetMapping("/people/roles/{roleName}/cities/{cityName}")
@@ -51,14 +51,14 @@ public class PersonController {
             @PathVariable("cityName") String cityName) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.peopleService.readByRoleAndCity(roleName,cityName));
+                .body(this.personService.readByRoleAndCity(roleName,cityName));
     }
 
     @PostMapping("/populate/people")
     @ResponseBody
     public ResponseEntity populatePerson() {
         try {
-            this.peopleService.create();
+            this.personService.create();
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body("[Populate people] People data populated properly.");
