@@ -7,40 +7,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import peoplepictures.populators.PeopleDatabasePopulator;
-import peoplepictures.repositories.CityRepository;
 import peoplepictures.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import peoplepictures.repositories.RoleRepository;
 
 import java.io.IOException;
 
 @Controller
-public class PersonController {
+public class PeopleController {
     @Autowired
     private PersonRepository personRepository;
     @Autowired
-    private RoleRepository roleRepository;
-    @Autowired
-    private CityRepository cityRepository;
-    @Autowired
     private PeopleDatabasePopulator peopleDatabasePopulator;
-
-    @GetMapping("/roles")
-    @ResponseBody
-    public ResponseEntity findAllRoles(){
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(this.roleRepository.findAll());
-    }
-
-    @GetMapping("/cities")
-    @ResponseBody
-    public ResponseEntity findAllCities(){
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(this.cityRepository.findAll());
-    }
 
     @GetMapping("/people")
     @ResponseBody
@@ -90,36 +68,6 @@ public class PersonController {
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("[Populate people] The operation did not finish properly.");
-        }
-    }
-
-    @PostMapping("/populate/roles")
-    @ResponseBody
-    public ResponseEntity populateRole() {
-        try {
-            this.peopleDatabasePopulator.populateRole(this.roleRepository);
-            return ResponseEntity
-                    .status(HttpStatus.CREATED)
-                    .body("[Populate roles] Roles data populated properly.");
-        } catch(IOException ioe){
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("[Populate roles] The operation did not finish properly.");
-        }
-    }
-
-    @PostMapping("/populate/cities")
-    @ResponseBody
-    public ResponseEntity populateCity() {
-        try {
-            this.peopleDatabasePopulator.populateCity(this.cityRepository);
-            return ResponseEntity
-                    .status(HttpStatus.CREATED)
-                    .body("[Populate cities] Cities data populated properly.");
-        } catch(IOException ioe){
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("[Populate cities] The operation did not finish properly.");
         }
     }
 }
