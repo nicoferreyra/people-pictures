@@ -7,31 +7,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import peoplepictures.populators.PeopleDatabasePopulator;
-import peoplepictures.repositories.CityRepository;
+import peoplepictures.services.CityService;
 
 import java.io.IOException;
 
 @Controller
-public class CitiesController {
+public class CityController {
     @Autowired
-    private CityRepository cityRepository;
-    @Autowired
-    private PeopleDatabasePopulator peopleDatabasePopulator;
+    private CityService cityService;
 
     @GetMapping("/cities")
     @ResponseBody
-    public ResponseEntity findAllCities(){
+    public ResponseEntity getCities(){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.cityRepository.findAll());
+                .body(this.cityService.read());
     }
 
     @PostMapping("/populate/cities")
     @ResponseBody
     public ResponseEntity populateCity() {
         try {
-            this.peopleDatabasePopulator.populateCity(this.cityRepository);
+            this.cityService.create();
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body("[Populate cities] Cities data populated properly.");
