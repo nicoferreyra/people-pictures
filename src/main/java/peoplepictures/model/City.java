@@ -6,30 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Person {
-
+public class City {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String name;
-    private String role;
-    private String city;
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
 
     public String getName() {
         return name;
@@ -38,6 +19,4 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
-
-
 }
