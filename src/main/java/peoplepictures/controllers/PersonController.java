@@ -1,7 +1,10 @@
 package peoplepictures.controllers;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import peoplepictures.populators.PeopleDatabasePopulator;
 import peoplepictures.repositories.CityRepository;
@@ -9,10 +12,8 @@ import peoplepictures.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import peoplepictures.repositories.RoleRepository;
-import peoplepictures.rest.Response;
 
 import java.io.IOException;
-import java.util.Map;
 
 @Controller
 public class PersonController {
@@ -27,88 +28,98 @@ public class PersonController {
 
     @GetMapping("/roles")
     @ResponseBody
-    public Map<String, Object>  findAllRoles(){
-        return Response
-                .builder()
-                .httpStatus(HttpStatus.CREATED.value())
-                .message("database created properly")
-                .data(this.roleRepository.findAll())
-                .build()
-                .asMap();
+    public ResponseEntity findAllRoles(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.roleRepository.findAll());
     }
 
     @GetMapping("/cities")
     @ResponseBody
-    public Map<String, Object>  findAllCities(){
-        return Response
-                .builder()
-                .httpStatus(HttpStatus.CREATED.value())
-                .message("database created properly")
-                .data(this.cityRepository.findAll())
-                .build()
-                .asMap();
+    public ResponseEntity findAllCities(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.cityRepository.findAll());
     }
 
-    @GetMapping("/populate_person")
+    @GetMapping("/people")
     @ResponseBody
-    public Map<String, Object> populatePerson() {
+    public ResponseEntity findAllPeople(){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.personRepository.findAll());
+    }
+
+    @GetMapping("/people/roles/{roleName}")
+    @ResponseBody
+    public ResponseEntity findPeopleByRole(
+            @PathVariable("roleName") String roleName) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.personRepository.findByRole(roleName));
+    }
+
+    @GetMapping("/people/cities/{cityName}")
+    @ResponseBody
+    public ResponseEntity findPeopleByCity(
+            @PathVariable("cityName") String cityName) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.personRepository.findByCity(cityName));
+    }
+
+    @GetMapping("/people/roles/{roleName}/cities/{cityName}")
+    @ResponseBody
+    public ResponseEntity findPeopleByRoleAndCity(
+            @PathVariable("roleName") String roleName,
+            @PathVariable("cityName") String cityName) {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.personRepository.findByRoleAndCity(roleName,cityName));
+    }
+
+    @PostMapping("/populate/people")
+    @ResponseBody
+    public ResponseEntity populatePerson() {
         try {
             this.peopleDatabasePopulator.populatePerson(this.personRepository);
-            return Response
-                    .builder()
-                    .httpStatus(HttpStatus.CREATED.value())
-                    .message("Person table populated properly")
-                    .build()
-                    .asMap();
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body("[Populate people] People data populated properly.");
         } catch(IOException ioe){
-            return Response
-                    .builder()
-                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                    .message("The operation did not finish properly")
-                    .build()
-                    .asMap();
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("[Populate people] The operation did not finish properly.");
         }
     }
 
-    @GetMapping("/populate_role")
+    @PostMapping("/populate/roles")
     @ResponseBody
-    public Map<String, Object> populateRole() {
+    public ResponseEntity populateRole() {
         try {
             this.peopleDatabasePopulator.populateRole(this.roleRepository);
-            return Response
-                    .builder()
-                    .httpStatus(HttpStatus.CREATED.value())
-                    .message("Role table populated properly")
-                    .build()
-                    .asMap();
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body("[Populate roles] Roles data populated properly.");
         } catch(IOException ioe){
-            return Response
-                    .builder()
-                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                    .message("The operation did not finish properly")
-                    .build()
-                    .asMap();
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("[Populate roles] The operation did not finish properly.");
         }
     }
 
-    @GetMapping("/populate_city")
+    @PostMapping("/populate/cities")
     @ResponseBody
-    public Map<String, Object> populateCity() {
+    public ResponseEntity populateCity() {
         try {
             this.peopleDatabasePopulator.populateCity(this.cityRepository);
-            return Response
-                    .builder()
-                    .httpStatus(HttpStatus.CREATED.value())
-                    .message("City table populated properly")
-                    .build()
-                    .asMap();
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body("[Populate cities] Cities data populated properly.");
         } catch(IOException ioe){
-            return Response
-                    .builder()
-                    .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                    .message("The operation did not finish properly")
-                    .build()
-                    .asMap();
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("[Populate cities] The operation did not finish properly.");
         }
     }
 }
