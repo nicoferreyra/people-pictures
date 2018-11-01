@@ -6,61 +6,59 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import peoplepictures.populators.PeopleDatabasePopulator;
-import peoplepictures.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import peoplepictures.services.PeopleService;
 
 import java.io.IOException;
 
 @Controller
-public class PeopleController {
+public class PersonController {
+
     @Autowired
-    private PersonRepository personRepository;
-    @Autowired
-    private PeopleDatabasePopulator peopleDatabasePopulator;
+    private PeopleService peopleService;
 
     @GetMapping("/people")
     @ResponseBody
-    public ResponseEntity findAllPeople(){
+    public ResponseEntity getPeople(){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personRepository.findAll());
+                .body(this.peopleService.read());
     }
 
     @GetMapping("/people/roles/{roleName}")
     @ResponseBody
-    public ResponseEntity findPeopleByRole(
+    public ResponseEntity getPeopleByRole(
             @PathVariable("roleName") String roleName) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personRepository.findByRole(roleName));
+                .body(this.peopleService.readByRole(roleName));
     }
 
     @GetMapping("/people/cities/{cityName}")
     @ResponseBody
-    public ResponseEntity findPeopleByCity(
+    public ResponseEntity getPeopleByCity(
             @PathVariable("cityName") String cityName) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personRepository.findByCity(cityName));
+                .body(this.peopleService.readByCity(cityName));
     }
 
     @GetMapping("/people/roles/{roleName}/cities/{cityName}")
     @ResponseBody
-    public ResponseEntity findPeopleByRoleAndCity(
+    public ResponseEntity readPeopleByRoleAndCity(
             @PathVariable("roleName") String roleName,
             @PathVariable("cityName") String cityName) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personRepository.findByRoleAndCity(roleName,cityName));
+                .body(this.peopleService.readByRoleAndCity(roleName,cityName));
     }
 
     @PostMapping("/populate/people")
     @ResponseBody
     public ResponseEntity populatePerson() {
         try {
-            this.peopleDatabasePopulator.populatePerson(this.personRepository);
+            this.peopleService.create();
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body("[Populate people] People data populated properly.");

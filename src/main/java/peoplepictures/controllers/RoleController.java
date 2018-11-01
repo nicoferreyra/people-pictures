@@ -7,31 +7,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import peoplepictures.populators.PeopleDatabasePopulator;
-import peoplepictures.repositories.RoleRepository;
+import peoplepictures.services.RolesService;
 
 import java.io.IOException;
 
 @Controller
-public class RolesController {
+public class RoleController {
+
     @Autowired
-    private RoleRepository roleRepository;
-    @Autowired
-    private PeopleDatabasePopulator peopleDatabasePopulator;
+    private RolesService rolesService;
 
     @GetMapping("/roles")
     @ResponseBody
-    public ResponseEntity findAllRoles(){
+    public ResponseEntity getRoles(){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.roleRepository.findAll());
+                .body(this.rolesService.read());
     }
 
     @PostMapping("/populate/roles")
     @ResponseBody
     public ResponseEntity populateRole() {
         try {
-            this.peopleDatabasePopulator.populateRole(this.roleRepository);
+            this.rolesService.create();
             return ResponseEntity
                     .status(HttpStatus.CREATED)
                     .body("[Populate roles] Roles data populated properly.");
