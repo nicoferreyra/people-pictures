@@ -25,6 +25,11 @@ public class RoleService {
         return resultPaginator.paginateResults(list, limit, start);
     }
 
+    public List<Role> read(String roleName, Integer limit, Integer start){
+        List<Role> list = this.roleRepository.findByName(roleName.replace("-"," "));
+        return resultPaginator.paginateResults(list, limit, start);
+    }
+
     public void create() throws IOException {
         this.peopleDatabasePopulator.populateRole(this.roleRepository);
     }

@@ -25,6 +25,11 @@ public class PersonService {
         return resultPaginator.paginateResults(list, limit, start);
     }
 
+    public List<Person> read(String personName, Integer limit, Integer start){
+        List<Person> list = this.personRepository.findByName(personName.replace("-"," "));
+        return resultPaginator.paginateResults(list, limit, start);
+    }
+
     public List<Person> readByRole(Integer limit, Integer start, String roleName){
         List<Person> list = this.personRepository.findByRole(roleName);
         return resultPaginator.paginateResults(list, limit, start);

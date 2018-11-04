@@ -25,6 +25,17 @@ public class PersonController {
                 .body(this.personService.read(limit, start));
     }
 
+    @GetMapping("/people/{personName}")
+    @ResponseBody
+    public ResponseEntity getPeople(
+            @PathVariable("personName") String personName,
+            @RequestParam(value = "limit", required = false) Integer limit,
+            @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.personService.read(personName, limit, start));
+    }
+
     @GetMapping("/people/roles/{roleName}")
     @ResponseBody
     public ResponseEntity getPeopleByRole(
@@ -52,6 +63,18 @@ public class PersonController {
     public ResponseEntity readPeopleByRoleAndCity(
             @PathVariable("roleName") String roleName,
             @PathVariable("cityName") String cityName,
+            @RequestParam(value = "limit", required = false) Integer limit,
+            @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(this.personService.readByRoleAndCity(limit, start, roleName,cityName));
+    }
+
+    @GetMapping("/people/cities/{cityName}/roles/{roleName}")
+    @ResponseBody
+    public ResponseEntity readPeopleByCityAndRole(
+            @PathVariable("cityName") String roleName,
+            @PathVariable("roleName") String cityName,
             @RequestParam(value = "limit", required = false) Integer limit,
             @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
         return ResponseEntity

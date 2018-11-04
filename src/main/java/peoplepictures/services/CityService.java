@@ -24,6 +24,11 @@ public class CityService {
         return resultPaginator.paginateResults(list, limit, start);
     }
 
+    public List<City> read(String cityName, Integer limit, Integer start){
+        List<City> list = this.cityRepository.findByName(cityName.replace("-"," "));
+        return resultPaginator.paginateResults(list, limit, start);
+    }
+
     public void create() throws IOException {
         this.peopleDatabasePopulator.populateCity(this.cityRepository);
     }
