@@ -80,6 +80,4 @@ brew install jq
 
 ## Author
 
-* **Nicolás Ferreyra** - *Initial work* - [PurpleBooth](https://github.com/niko-air)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Nicolás Ferreyra** - [niko-air](https://github.com/niko-air)
