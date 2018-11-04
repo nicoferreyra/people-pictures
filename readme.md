@@ -9,6 +9,7 @@ This project is a RESTful API made to fetch the people that work for Tarmac. It 
 ![technology Spring Boot](https://img.shields.io/badge/technology-spring--boot-red.svg)
 ![technology Spring MVC](https://img.shields.io/badge/technology-spring--mvc-orange.svg)
 ![technology MySQL](https://img.shields.io/badge/technology-mysql-lightgrey.svg)
+![technology Jersey](https://img.shields.io/badge/technology-jersey-ff69b4.svg)
 
 ## Getting Started
 
