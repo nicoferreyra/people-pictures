@@ -22,6 +22,7 @@ import java.util.Scanner;
 public class PeopleDatabasePopulator {
     private static final String PEOPLE_JSON_PATH = "src/main/datasource/people.json";
     private List<Map<String, String>> peopleJsonList = new ArrayList<>();
+    private String imageUri = "http://tarmac.io/assets/members/{name_to_replace}.png";
 
     public void populatePerson(PersonRepository personRepository) throws IOException{
         getPeopleJsonList().stream().forEach(personMap -> {
@@ -33,9 +34,15 @@ public class PeopleDatabasePopulator {
                 person.setName(name);
                 person.setRole(roleName);
                 person.setCity(cityName);
+                this.setPersonImage(person);
                 personRepository.save(person);
             }
         });
+    }
+
+    private void setPersonImage(Person person){
+        person.setImageUri(imageUri.replace("{name_to_replace}",
+          person.getName().toLowerCase().replace(" ", "-") ));
     }
 
     public void populateRole(RoleRepository roleRepository) throws IOException{
