@@ -10,17 +10,17 @@ import peoplepictures.repositories.CityRepository;
 import peoplepictures.repositories.PersonRepository;
 import peoplepictures.repositories.RoleRepository;
 
-import java.io.File;
-import java.io.IOException;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.MediaType;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 @Component
 @Scope("singleton")
 public class PeopleDatabasePopulator {
-    private static final String PEOPLE_JSON_PATH = "src/main/datasource/people.json";
+    private static final String PEOPLE_JSON_URI = "https://gist.githubusercontent.com/ricardoul/c25bd1ade4d0977ab9bf660fae8dcc81/raw/feaa8243af1b324a995e9a0b3c047b2a79d6cd83/tarmac-team.json";
     private List<Map<String, String>> peopleJsonList = new ArrayList<>();
     private String imageUri = "http://tarmac.io/assets/members/{name_to_replace}.png";
 
@@ -67,10 +67,16 @@ public class PeopleDatabasePopulator {
 
     private List<Map<String, String>> getPeopleJsonList() throws IOException{
         if(this.peopleJsonList.isEmpty()){
-            String peopleJson = new Scanner(new File(PEOPLE_JSON_PATH)).useDelimiter("\\Z").next();
+            String peopleJson = getJsonFromServer();
             this.peopleJsonList = new ObjectMapper().readValue(peopleJson, ArrayList.class);
         }
         return this.peopleJsonList;
     }
 
+    private String getJsonFromServer(){
+        return ClientBuilder.newClient()
+                .target(PEOPLE_JSON_URI)
+                .request().accept(MediaType.APPLICATION_JSON)
+                .get(String.class);
+    }
 }
