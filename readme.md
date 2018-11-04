@@ -12,28 +12,30 @@ This project is a REST API made to fetch Tarmac.io people. It also allows to fet
 
 ## Getting Started
 
-Get the project from Git repository
+### Get the project from Git repository
 ```
 git clone https://github.com/niko-air/people-pictures.git
 ```
 
-Change to project folder
+### Change to project folder
 ```
 cd people-pictures 
 ```
 
-Fetch all branches from remote repository and change to 'develop' branch
+### Fetch all branches from remote repository and change to 'develop' branch
 ```
 git fetch --all
 git checkout develop
 ```
+
+### If you want to import the project to your IDE, please do it using the 'build.gradle' file.
 
 ## Installing
 The following steps will set your local environment for running the application.
 
 ### Install Homebrew
 
-Execute in your terminal the following commands
+#### Execute in your terminal the following commands
 
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
