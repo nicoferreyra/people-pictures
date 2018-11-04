@@ -8,7 +8,7 @@ This project is a REST API made to fetch Tarmac.io people. It also allows to fet
 ![technology Gradle](https://img.shields.io/badge/technology-Gradle-blue.svg)
 ![technology Spring Boot](https://img.shields.io/badge/technology-spring--boot-red.svg)
 ![technology Spring MVC](https://img.shields.io/badge/technology-spring--mvc-green.svg)
-![technology MySql](https://img.shields.io/badge/technology-mysql-lightgrey.svg)
+![technology MySQL](https://img.shields.io/badge/technology-mysql-lightgrey.svg)
 
 ## Getting Started
 
@@ -54,8 +54,8 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install gradle 4.10.2
 ```
 
-### MySql setup
-In this step, you will configure a MySql server creating a database and a proper user for it.
+### MySQL setup
+In this step, you will configure a MySQL server creating a database and a proper user for it.
 ```
 brew install mysql
 
