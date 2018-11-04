@@ -27,7 +27,7 @@ public class RoleController {
 
     @GetMapping("/roles/{roleName}")
     @ResponseBody
-    public ResponseEntity getRoles(
+    public ResponseEntity getRolesByName(
             @PathVariable("roleName") String roleName,
             @RequestParam(value = "limit", required = false) Integer limit,
             @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){

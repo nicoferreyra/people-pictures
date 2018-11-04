@@ -26,7 +26,7 @@ public class CityController {
 
     @GetMapping("/cities/{cityName}")
     @ResponseBody
-    public ResponseEntity getRoles(
+    public ResponseEntity getCitiesByName(
             @PathVariable("cityName") String cityName,
             @RequestParam(value = "limit", required = false) Integer limit,
             @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){

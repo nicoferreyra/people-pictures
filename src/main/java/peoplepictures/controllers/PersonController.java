@@ -27,7 +27,7 @@ public class PersonController {
 
     @GetMapping("/people/{personName}")
     @ResponseBody
-    public ResponseEntity getPeople(
+    public ResponseEntity getPeopleByName(
             @PathVariable("personName") String personName,
             @RequestParam(value = "limit", required = false) Integer limit,
             @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
