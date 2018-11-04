@@ -1,6 +1,6 @@
 # People pictures API
 
-This project is a REST API made to fetch Tarmac.io people. It also allows to fetch roles and cities where the company operates.
+This project is a REST API made to fetch Tarmac.io people. It also allows to fetch roles and cities of the company's people.
 
 ## Built With
 
@@ -12,17 +12,17 @@ This project is a REST API made to fetch Tarmac.io people. It also allows to fet
 
 ## Getting Started
 
-Get the project from the Git repository
+Get the project from Git repository
 ```
 git clone https://github.com/niko-air/people-pictures.git
 ```
 
-Move to the project folder
+Change to project folder
 ```
 cd people-pictures 
 ```
 
-Fetch all branches from remote repositories and move to develop branch
+Fetch all branches from remote repository and change to 'develop' branch
 ```
 git fetch --all
 git checkout develop
@@ -33,7 +33,7 @@ The following steps will set your local environment for running the application.
 
 ### Install Homebrew
 
-Execute in your terminal the folowing commands
+Execute in your terminal the following commands
 
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -55,7 +55,7 @@ sdk install gradle 4.10.2
 ```
 
 ### MySQL setup
-In this step, you will configure a MySQL server creating a database and a proper user for it.
+In this step, you will configure a MySQL server by creating a database and a proper user for it.
 ```
 brew install mysql
 
@@ -65,18 +65,84 @@ sudo mysql
 mysql> create database people_pictures;
 mysql> create user 'people_pictures_user'@'localhost' identified by 'xtzcnjiufk';
 mysql> grant all on people_pictures.* to 'people_pictures_user'@'localhost';
-
-exit;
+mysql> exit;
 ```
 
 
-### Install jq to see results:
+### Install jq to see results in JSON format
 ```
 brew install jq
 ```
 
-## Running the tests
+## Running the application
 
+Start the server by executing 'run-server.sh' file
+```
+sh jobs/run-server.sh 
+```
+
+## Testing the application - Examples
+
+###Execute the following request to the API:
+
+Get all people from the company
+```
+curl -X GET "http://localhost:8080/people" | jq .
+```
+
+You can also provide a start and a limit to paginate results. For example, if you want to fetch only the first 5 people of the company
+```
+curl -X GET "http://localhost:8080/people?limit=5" | jq .
+```
+
+Or maybe retrieve the last 5 people from the company
+
+```
+curl -X GET "http://localhost:8080/people?limit=5&start=55" | jq .
+```
+
+Fetch a specific person by name
+```
+curl -X GET "http://localhost:8080/people/petar-tofevski" | jq .
+```
+
+Fetch people by role and city examples
+```
+curl -X GET "http://localhost:8080/people/roles/Developer" | jq .
+
+curl -X GET "http://localhost:8080/people/roles/Developer?start=40" | jq .
+
+curl -X GET "http://localhost:8080/people/roles/Developer?start=30&limit=7" | jq .
+
+curl -X GET "http://localhost:8080/people/cities/Montevideo" | jq .
+
+curl -X GET "http://localhost:8080/people/cities/Montevideo?limit=5" | jq .
+
+curl -X GET "http://localhost:8080/people/cities/Montevideo?limit=10&start=10" | jq .
+```
+
+Fetch all cities
+```
+curl -X GET "http://localhost:8080/cities" | jq .
+```
+Fetch a specific city by name
+```
+curl -X GET "http://localhost:8080/cities/minnesota" | jq .
+```
+
+Fetch all roles
+```
+curl -X GET "http://localhost:8080/roles" | jq .
+```
+Fetch a specific role by name
+```
+curl -X GET "http://localhost:8080/roles/director-or-partnerships" | jq .
+```
+
+## Shutdown the application
+```
+sh jobs/shutdown-server.sh
+```
 
 ## Author
 
