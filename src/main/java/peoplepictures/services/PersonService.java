@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import peoplepictures.model.Person;
 import peoplepictures.populators.PeopleDatabasePopulator;
 import peoplepictures.repositories.PersonRepository;
+import peoplepictures.utils.ResultPaginator;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,21 +17,27 @@ public class PersonService {
     private PersonRepository personRepository;
     @Autowired
     private PeopleDatabasePopulator peopleDatabasePopulator;
+    @Autowired
+    private ResultPaginator resultPaginator;
 
-    public Iterable<Person> read(){
-        return this.personRepository.findAll();
+    public List<Person> read(Integer limit, Integer start){
+        List<Person> list = this.personRepository.findAll();
+        return resultPaginator.paginateResults(list, limit, start);
     }
 
-    public List<Person> readByRole(String roleName){
-        return this.personRepository.findByRole(roleName);
+    public List<Person> readByRole(Integer limit, Integer start, String roleName){
+        List<Person> list = this.personRepository.findByRole(roleName);
+        return resultPaginator.paginateResults(list, limit, start);
     }
 
-    public List<Person> readByCity(String cityName){
-        return this.personRepository.findByCity(cityName);
+    public List<Person> readByCity(Integer limit, Integer start, String cityName){
+        List<Person> list =  this.personRepository.findByCity(cityName);
+        return resultPaginator.paginateResults(list, limit, start);
     }
 
-    public List<Person> readByRoleAndCity(String roleName, String cityName){
-        return this.personRepository.findByRoleAndCity(roleName, cityName);
+    public List<Person> readByRoleAndCity(Integer limit, Integer start, String roleName, String cityName){
+        List<Person> list =  this.personRepository.findByRoleAndCity(roleName, cityName);
+        return resultPaginator.paginateResults(list, limit, start);
     }
 
     public void create() throws IOException {

@@ -2,10 +2,7 @@ package peoplepictures.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import peoplepictures.services.PersonService;
@@ -20,38 +17,46 @@ public class PersonController {
 
     @GetMapping("/people")
     @ResponseBody
-    public ResponseEntity getPeople(){
+    public ResponseEntity getPeople(
+            @RequestParam(value = "limit", required = false) Integer limit,
+            @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personService.read());
+                .body(this.personService.read(limit, start));
     }
 
     @GetMapping("/people/roles/{roleName}")
     @ResponseBody
     public ResponseEntity getPeopleByRole(
-            @PathVariable("roleName") String roleName) {
+            @PathVariable("roleName") String roleName,
+            @RequestParam(value = "limit", required = false) Integer limit,
+            @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personService.readByRole(roleName));
+                .body(this.personService.readByRole(limit, start, roleName));
     }
 
     @GetMapping("/people/cities/{cityName}")
     @ResponseBody
     public ResponseEntity getPeopleByCity(
-            @PathVariable("cityName") String cityName) {
+            @PathVariable("cityName") String cityName,
+            @RequestParam(value = "limit", required = false) Integer limit,
+            @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personService.readByCity(cityName));
+                .body(this.personService.readByCity(limit, start, cityName));
     }
 
     @GetMapping("/people/roles/{roleName}/cities/{cityName}")
     @ResponseBody
     public ResponseEntity readPeopleByRoleAndCity(
             @PathVariable("roleName") String roleName,
-            @PathVariable("cityName") String cityName) {
+            @PathVariable("cityName") String cityName,
+            @RequestParam(value = "limit", required = false) Integer limit,
+            @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.personService.readByRoleAndCity(roleName,cityName));
+                .body(this.personService.readByRoleAndCity(limit, start, roleName,cityName));
     }
 
     @PostMapping("/populate/people")

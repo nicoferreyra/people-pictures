@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import peoplepictures.services.CityService;
 
@@ -18,10 +19,12 @@ public class CityController {
 
     @GetMapping("/cities")
     @ResponseBody
-    public ResponseEntity getCities(){
+    public ResponseEntity getCities(
+            @RequestParam(value = "limit", required = false) Integer limit,
+            @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(this.cityService.read());
+                .body(this.cityService.read(limit, start));
     }
 
     @PostMapping("/populate/cities")
