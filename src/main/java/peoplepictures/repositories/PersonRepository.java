@@ -9,13 +9,13 @@ public interface PersonRepository extends CrudRepository<Person, Integer> {
 
     List<Person> findAll();
 
-    List<Person> findByName(String name);
+    List findByName(String name);
 
-    List<Person> findByNameAndRoleAndCity(String name, String role, String city);
+    List findByNameAndRoleAndCity(String name, String role, String city);
 
-    List<Person> findByRoleAndCity(String role, String city);
+    List findByRoleAndCity(String role, String city);
 
-    List<Person> findByRole(String role);
+    List findByRole(String role);
 
-    List<Person> findByCity(String city);
+    List findByCity(String city);
 }

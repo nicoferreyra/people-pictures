@@ -20,28 +20,28 @@ public class PersonService {
     @Autowired
     private ResultPaginator resultPaginator;
 
-    public List<Person> read(Integer limit, Integer start){
-        List<Person> list = this.personRepository.findAll();
+    public List read(Integer limit, Integer start){
+        List list = this.personRepository.findAll();
         return resultPaginator.paginateResults(list, limit, start);
     }
 
-    public List<Person> read(String personName, Integer limit, Integer start){
-        List<Person> list = this.personRepository.findByName(personName.replace("-"," "));
+    public List read(String personName, Integer limit, Integer start){
+        List list = this.personRepository.findByName(personName.replace("-"," "));
         return resultPaginator.paginateResults(list, limit, start);
     }
 
-    public List<Person> readByRole(Integer limit, Integer start, String roleName){
-        List<Person> list = this.personRepository.findByRole(roleName);
+    public List readByRole(Integer limit, Integer start, String roleName){
+        List list = this.personRepository.findByRole(roleName);
         return resultPaginator.paginateResults(list, limit, start);
     }
 
-    public List<Person> readByCity(Integer limit, Integer start, String cityName){
-        List<Person> list =  this.personRepository.findByCity(cityName);
+    public List readByCity(Integer limit, Integer start, String cityName){
+        List list =  this.personRepository.findByCity(cityName);
         return resultPaginator.paginateResults(list, limit, start);
     }
 
-    public List<Person> readByRoleAndCity(Integer limit, Integer start, String roleName, String cityName){
-        List<Person> list =  this.personRepository.findByRoleAndCity(roleName, cityName);
+    public List readByRoleAndCity(Integer limit, Integer start, String roleName, String cityName){
+        List list =  this.personRepository.findByRoleAndCity(roleName, cityName);
         return resultPaginator.paginateResults(list, limit, start);
     }
 

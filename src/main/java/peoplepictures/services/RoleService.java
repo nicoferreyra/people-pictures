@@ -20,13 +20,13 @@ public class RoleService {
     @Autowired
     private ResultPaginator resultPaginator;
 
-    public Iterable<Role> read(Integer limit, Integer start){
-        List<Role> list =  this.roleRepository.findAll();
+    public List read(Integer limit, Integer start){
+        List list =  this.roleRepository.findAll();
         return resultPaginator.paginateResults(list, limit, start);
     }
 
-    public List<Role> read(String roleName, Integer limit, Integer start){
-        List<Role> list = this.roleRepository.findByName(roleName.replace("-"," "));
+    public List read(String roleName, Integer limit, Integer start){
+        List list = this.roleRepository.findByName(roleName.replace("-"," "));
         return resultPaginator.paginateResults(list, limit, start);
     }
 

@@ -19,13 +19,13 @@ public class CityService {
     @Autowired
     private ResultPaginator resultPaginator;
 
-    public Iterable<City> read(Integer limit, Integer start){
-        List<City> list =  this.cityRepository.findAll();
+    public Iterable read(Integer limit, Integer start){
+        List list =  this.cityRepository.findAll();
         return resultPaginator.paginateResults(list, limit, start);
     }
 
-    public List<City> read(String cityName, Integer limit, Integer start){
-        List<City> list = this.cityRepository.findByName(cityName.replace("-"," "));
+    public List read(String cityName, Integer limit, Integer start){
+        List list = this.cityRepository.findByName(cityName.replace("-"," "));
         return resultPaginator.paginateResults(list, limit, start);
     }
 
