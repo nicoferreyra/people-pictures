@@ -14,6 +14,7 @@ public class Person {
     private String name;
     private String role;
     private String city;
+    private String imageUri;
 
     public String getCity() {
         return city;
@@ -39,5 +40,8 @@ public class Person {
         this.name = name;
     }
 
+    public String getImageUri() { return imageUri; }
+
+    public void setImageUri(String imageUri) { this.imageUri = imageUri; }
 
 }
