@@ -83,30 +83,30 @@ sh jobs/run-server.sh
 
 ## Testing the application - Examples
 
-###Execute the following request to the API:
+### Execute the following request to the API:
 
-Get all people from the company
+#### Fetch all people that works for the company
 ```
 curl -X GET "http://localhost:8080/people" | jq .
 ```
 
-You can also provide a start and a limit to paginate results. For example, if you want to fetch only the first 5 people of the company
+#### You can also provide a start and a limit to paginate results. For example, if you want to fetch only the first 5 people of the company
 ```
 curl -X GET "http://localhost:8080/people?limit=5" | jq .
 ```
 
-Or maybe retrieve the last 5 people from the company
+#### Or maybe retrieve the last 5 people from the company
 
 ```
 curl -X GET "http://localhost:8080/people?limit=5&start=55" | jq .
 ```
 
-Fetch a specific person by name
+#### Fetch a specific person by name
 ```
 curl -X GET "http://localhost:8080/people/petar-tofevski" | jq .
 ```
 
-Fetch people by role and city examples
+#### Fetch people by role and city examples
 ```
 curl -X GET "http://localhost:8080/people/roles/Developer" | jq .
 
@@ -121,20 +121,21 @@ curl -X GET "http://localhost:8080/people/cities/Montevideo?limit=5" | jq .
 curl -X GET "http://localhost:8080/people/cities/Montevideo?limit=10&start=10" | jq .
 ```
 
-Fetch all cities
+#### Fetch all cities
 ```
 curl -X GET "http://localhost:8080/cities" | jq .
 ```
-Fetch a specific city by name
+
+#### Fetch a specific city by name
 ```
 curl -X GET "http://localhost:8080/cities/minnesota" | jq .
 ```
 
-Fetch all roles
+#### Fetch all roles
 ```
 curl -X GET "http://localhost:8080/roles" | jq .
 ```
-Fetch a specific role by name
+#### Fetch a specific role by name
 ```
 curl -X GET "http://localhost:8080/roles/director-or-partnerships" | jq .
 ```
