@@ -1,6 +1,6 @@
 # People pictures API
 
-This project is a REST API made to fetch Tarmac.io people. It also allows to fetch roles and cities of the company's people.
+This project is a RESTful API made to fetch the people that work for Tarmac. It also allows to fetch roles and cities related to the company.
 
 ## Built With
 
@@ -22,7 +22,7 @@ git clone https://github.com/niko-air/people-pictures.git
 cd people-pictures 
 ```
 
-### Fetch all branches from remote repository and change to 'develop' branch
+### Fetch all branches from remote repository and switch from 'master' to 'develop' branch
 ```
 git fetch --all
 git checkout develop
@@ -33,10 +33,7 @@ git checkout develop
 ## Installing
 The following steps will set your local environment for running the application.
 
-### Install Homebrew
-
-#### Execute in your terminal the following commands
-
+### Install and update Homebrew
 ```
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -50,14 +47,13 @@ curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 ```
 
-
 ### Install Gradle
 ```
 sdk install gradle 4.10.2
 ```
 
 ### MySQL setup
-In this step, you will configure a MySQL server by creating a database and a proper user for it.
+#### In this step, you will configure a MySQL server by creating a database and a proper user for it.
 ```
 brew install mysql
 
@@ -87,7 +83,7 @@ sh jobs/run-server.sh
 
 ### Execute the following request to the API:
 
-#### Fetch all people that works for the company
+#### Fetch all people that work for the company
 ```
 curl -X GET "http://localhost:8080/people" | jq .
 ```
