@@ -5,7 +5,7 @@ This project is a RESTful API made to fetch the people that work for Tarmac. It 
 ## Built With
 
 ![language Java 8](https://img.shields.io/badge/language-Java%208-green.svg)
-![build-tool Gradle](https://img.shields.io/badge/build-tool-Gradle-blue.svg)
+![build-tool Gradle](https://img.shields.io/badge/build_tool-Gradle-blue.svg)
 ![framework Spring Boot](https://img.shields.io/badge/framework-spring--boot-red.svg)
 ![framework Spring MVC](https://img.shields.io/badge/framework-spring--mvc-orange.svg)
 ![database MySQL](https://img.shields.io/badge/database-mysql-lightgrey.svg)
