@@ -6,9 +6,9 @@ This project is a REST API made to fetch Tarmac.io people. It also allows to fet
 
 ![technology Java 8](https://img.shields.io/badge/technology-Java%208-green.svg)
 ![technology Gradle](https://img.shields.io/badge/technology-Gradle-blue.svg)
-![technology Spring Boot] (https://img.shields.io/badge/technology-spring--boot-red.svg)
-![technology Spring MVC] (https://img.shields.io/badge/technology-spring--mvc-green.svg)
-![technology MySql] (https://img.shields.io/badge/technology-mysql-lightgrey.svg)
+![technology Spring Boot](https://img.shields.io/badge/technology-spring--boot-red.svg)
+![technology Spring MVC](https://img.shields.io/badge/technology-spring--mvc-green.svg)
+![technology MySql](https://img.shields.io/badge/technology-mysql-lightgrey.svg)
 
 ## Getting Started
 
