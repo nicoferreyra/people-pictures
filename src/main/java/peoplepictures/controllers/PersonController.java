@@ -17,6 +17,7 @@ public class PersonController {
 
     @GetMapping("/people")
     @ResponseBody
+    @CrossOrigin
     public ResponseEntity getPeople(
             @RequestParam(value = "limit", required = false) Integer limit,
             @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
@@ -27,6 +28,7 @@ public class PersonController {
 
     @GetMapping("/people/{personName}")
     @ResponseBody
+    @CrossOrigin
     public ResponseEntity getPeopleByName(
             @PathVariable("personName") String personName,
             @RequestParam(value = "limit", required = false) Integer limit,
@@ -38,6 +40,7 @@ public class PersonController {
 
     @GetMapping("/people/roles/{roleName}")
     @ResponseBody
+    @CrossOrigin
     public ResponseEntity getPeopleByRole(
             @PathVariable("roleName") String roleName,
             @RequestParam(value = "limit", required = false) Integer limit,
@@ -49,6 +52,7 @@ public class PersonController {
 
     @GetMapping("/people/cities/{cityName}")
     @ResponseBody
+    @CrossOrigin
     public ResponseEntity getPeopleByCity(
             @PathVariable("cityName") String cityName,
             @RequestParam(value = "limit", required = false) Integer limit,
@@ -60,6 +64,7 @@ public class PersonController {
 
     @GetMapping("/people/roles/{roleName}/cities/{cityName}")
     @ResponseBody
+    @CrossOrigin
     public ResponseEntity readPeopleByRoleAndCity(
             @PathVariable("roleName") String roleName,
             @PathVariable("cityName") String cityName,
@@ -72,6 +77,7 @@ public class PersonController {
 
     @GetMapping("/people/cities/{cityName}/roles/{roleName}")
     @ResponseBody
+    @CrossOrigin
     public ResponseEntity readPeopleByCityAndRole(
             @PathVariable("cityName") String roleName,
             @PathVariable("roleName") String cityName,

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html id="html">
+    <head>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <div id="tarmac_people">
+            <h1 id="title">
+                Tarmac people
+            </h1>
+            <div id="filters">
+                <label> Choose role</label>
+                <select v-model="roleFilter">
+                    <option :selected="true"></option>
+                    <option v-for="role in roles" v-bind:value="role.name" >{{ role.name }}</option>
+                </select>
+                <label> Choose city</label>
+                <select v-model="cityFilter">
+                    <option :selected="true"></option>
+                    <option v-for="city in cities" v-bind:value="city.name" >{{ city.name }}</option>
+                </select>
+                <label> Page number</label>
+                <input v-model="pageNumber">
+
+                <button v-on:click="previousPage"> - </button>
+                <button v-on:click="nextPage"> + </button>
+
+                <button v-on:click="search"> Search </button>
+            </div>
+
+            <ul id="personList">
+                <li v-for="person in people" class="person">
+                    <div class="image" >
+                        <img v-bind:src="person.imageUri" class="image">
+                    </div>
+                    <div class="attributes" @mouseover="">
+                        <label class="attribute">{{ person.name }}</label>
+                        <label class="attribute">{{ person.role }}</label>
+                        <label class="attribute">{{ person.city }}</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="./main.js"></script>
+    </body>
+</html>

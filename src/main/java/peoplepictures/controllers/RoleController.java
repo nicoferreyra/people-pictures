@@ -17,6 +17,7 @@ public class RoleController {
 
     @GetMapping("/roles")
     @ResponseBody
+    @CrossOrigin
     public ResponseEntity getRoles(
             @RequestParam(value = "limit", required = false) Integer limit,
             @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){

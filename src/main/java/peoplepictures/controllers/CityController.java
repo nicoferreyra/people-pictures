@@ -16,6 +16,7 @@ public class CityController {
 
     @GetMapping("/cities")
     @ResponseBody
+    @CrossOrigin
     public ResponseEntity getCities(
             @RequestParam(value = "limit", required = false) Integer limit,
             @RequestParam(value = "start", required = false, defaultValue = "0") Integer start){
