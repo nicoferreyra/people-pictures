@@ -2,7 +2,7 @@
 
 This project is a web application made to show the people that work in Tarmac. 
 It has a RESTful API that provides people, roles and cities related to the company. 
-It also has a frontend layer that consumes the mentiones API and uses the data to allow user interaction.
+It also has a frontend application that consumes the mentiones API and uses the data to allow user interaction.
 
 ## Built With
 
