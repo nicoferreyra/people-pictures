@@ -8,11 +8,11 @@ It also has a front-end layer that consumes the mentiones API and uses the data 
 
 ![language Java 8](https://img.shields.io/badge/language-Java%208-green.svg)
 ![build-tool Gradle](https://img.shields.io/badge/build_tool-Gradle-blue.svg)
-![framework Spring Boot](https://img.shields.io/badge/framework-spring--boot-red.svg)
-![framework Spring MVC](https://img.shields.io/badge/framework-spring--mvc-orange.svg)
-![database MySQL](https://img.shields.io/badge/database-mysql-lightgrey.svg)
-![technology Jersey](https://img.shields.io/badge/technology-jersey-ff69b4.svg)
-![technology VUE](https://img.shields.io/badge/technology-jersey-blue.svg)
+![framework Spring Boot](https://img.shields.io/badge/framework-Spring--Boot-red.svg)
+![framework Spring MVC](https://img.shields.io/badge/framework-Spring--MVC-orange.svg)
+![database MySQL](https://img.shields.io/badge/database-MySQL-lightgrey.svg)
+![technology Jersey](https://img.shields.io/badge/technology-Jersey-ff69b4.svg)
+![technology VUEJS](https://img.shields.io/badge/technology-Vus.js-blue.svg)
 
 ## Getting Started
 
