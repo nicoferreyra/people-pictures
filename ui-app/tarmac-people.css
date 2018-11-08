@@ -1,0 +1,152 @@
+#html {
+    background-color: aliceblue;
+}
+
+#tarmac_people {
+}
+
+.title {
+    width: 900px;
+    margin: auto;
+    margin-top: -50px;
+    text-align: center;
+    color: #111;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+#filters {
+    width: 900px;
+    margin: auto;
+    margin-bottom: 120px;
+    margin-left: 192px;
+}
+
+#personList {
+    width: 900px;
+    margin: auto;
+}
+
+.person {
+    z-index: 0;
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    position:absolute;
+    z-index: 1;
+}
+
+.attributes-container{
+    width: 200px;
+    height: 200px;
+    position:absolute;
+    z-index: 2;
+    opacity: 0;
+}
+
+.attributes-container:hover{
+    opacity:.5;
+    background-color: darkblue;
+    -webkit-transition: opacity 0.8s;
+}
+
+.attributes {
+    width: 200px;
+    margin-top: 135px;
+    position:absolute;
+    z-index: 3;
+    color: white;
+}
+
+.attribute {
+    width: 200px;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+}
+
+.bold-attribute {
+    width: 200px;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.select-element {
+    padding:6px 15px;
+    border:2px solid #207cca;
+    background-color:#207cca;
+    color:#fafafa;
+    margin-left: 10px;
+    width: 200px;
+    height: 30px;
+    float: left;
+    display: inline-block;
+}
+
+.select-element:hover  {
+    background-color:#fafafa;
+    color:#207cca;
+}
+
+.search-button {
+    padding:6px 15px;
+    border:2px solid #207cca;
+    background-color:#207cca;
+    color:#fafafa;
+    width: 200px;
+    margin-left: 10px;
+    height: 30px;
+    float: left;
+    display: inline-block;
+}
+
+.search-button:hover  {
+    background-color:#fafafa;
+    color:#207cca;
+}
+
+.page-button {
+    padding:6px 15px;
+    border:2px solid #207cca;
+    background-color:#207cca;
+    color:#fafafa;
+    width: 48px;
+    margin-left: 10px;
+    height: 30px;
+    float: left;
+    display: inline-block;
+}
+
+.page-button:hover  {
+    background-color:#fafafa;
+    color:#207cca;
+}
+
+.page-label {
+    padding:6px 15px;
+    border:2px solid #207cca;
+    background-color:#207cca;
+    color:#fafafa;
+    width: 50px;
+    margin-left: 10px;
+    height: 14px;
+    float: left;
+    display: inline-block;
+}
+
+.page-label:hover  {
+    background-color:#fafafa;
+    color:#207cca;
+}
