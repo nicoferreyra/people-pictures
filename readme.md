@@ -1,4 +1,4 @@
-# People pictures API
+# People pictures
 
 This project is a web application made to show the people that work in Tarmac. 
 It has a RESTful API that provides people, roles and cities related to the company. 
@@ -12,7 +12,7 @@ It also has a front-end layer that consumes the mentiones API and uses the data 
 ![framework Spring MVC](https://img.shields.io/badge/framework-spring--mvc-orange.svg)
 ![database MySQL](https://img.shields.io/badge/database-mysql-lightgrey.svg)
 ![technology Jersey](https://img.shields.io/badge/technology-jersey-ff69b4.svg)
-![technology VUE](https://img.shields.io/badge/technology-jersey-ff69b4.svg)
+![technology VUE](https://img.shields.io/badge/technology-jersey-blue.svg)
 
 ## Getting Started
 
