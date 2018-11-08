@@ -12,7 +12,7 @@ It also has a front-end layer that consumes the mentiones API and uses the data 
 ![framework Spring MVC](https://img.shields.io/badge/framework-Spring--MVC-orange.svg)
 ![database MySQL](https://img.shields.io/badge/database-MySQL-lightgrey.svg)
 ![technology Jersey](https://img.shields.io/badge/technology-Jersey-ff69b4.svg)
-![technology VUEJS](https://img.shields.io/badge/technology-Vus.js-blue.svg)
+![technology VUEJS](https://img.shields.io/badge/technology-Vue.js-blue.svg)
 
 ## Getting Started
 
