@@ -1,6 +1,8 @@
 # People pictures API
 
-This project is a RESTful API made to fetch the people that work for Tarmac. It also allows to fetch roles and cities related to the company.
+This project is a web application made to show the people that work in Tarmac. 
+It has a RESTful API that provides people, roles and cities related to the company. 
+It also has a front-end layer that consumes the mentiones API and uses the data to allow user interaction.
 
 ## Built With
 
@@ -10,6 +12,7 @@ This project is a RESTful API made to fetch the people that work for Tarmac. It 
 ![framework Spring MVC](https://img.shields.io/badge/framework-spring--mvc-orange.svg)
 ![database MySQL](https://img.shields.io/badge/database-mysql-lightgrey.svg)
 ![technology Jersey](https://img.shields.io/badge/technology-jersey-ff69b4.svg)
+![technology VUE](https://img.shields.io/badge/technology-jersey-ff69b4.svg)
 
 ## Getting Started
 
@@ -73,14 +76,21 @@ mysql> exit;
 brew install jq
 ```
 
-## Running the application
+## Running the RESTful API
 
 Start the server by executing 'run-server.sh' file
 ```
 sh jobs/run-server.sh 
 ```
 
-## Testing the application - Examples
+## Open the application
+
+### In the project root folder, execute the following command to open the web application:
+```
+open ui-app/tarmac-people.html
+```
+
+## Testing the RESTful API - Examples
 
 ### Execute the following request to the API:
 
@@ -139,7 +149,7 @@ curl -X GET "http://localhost:8080/roles" | jq .
 curl -X GET "http://localhost:8080/roles/director-or-partnerships" | jq .
 ```
 
-## Shutdown the application
+## Shutdown the RESTful API
 ```
 sh jobs/shutdown-server.sh
 ```
