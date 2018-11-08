@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html id="html">
+    <head>
+        <link rel="stylesheet" href="tarmac-people.css">
+    </head>
+    <body>
+        <div id="tarmac_people">
+            <div class="title">
+                <h1>
+                    tarmac people
+                </h1>
+            </div>
+
+            <div id="filters">
+                <div>
+                    <select class="select-element" v-model="roleFilter">
+                        <option :selected="true" value=""> Select a role...</option>
+                        <option v-for="role in roles" v-bind:value="role.name" >{{ role.name }}</option>
+                    </select>
+                </div>
+
+                <div>
+                    <select class="select-element" v-model="cityFilter" >
+                        <option :selected="true" value=""> Select a city...</option>
+                        <option v-for="city in cities" v-bind:value="city.name" >{{ city.name }}</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="page-label"> Page: {{ pageNumber }} </label>
+
+                    <button class="page-button" v-on:click="previousPage"> - </button>
+                    <button class="page-button" v-on:click="nextPage"> + </button>
+                </div>
+
+                <button class="search-button" v-on:click="search"> Search </button>
+
+            </div>
+
+            <ul id="personList">
+                <li v-for="person in people" class="person">
+
+                    <div class="image" >
+                        <img v-bind:src="person.imageUri" class="image">
+                    </div>
+
+                    <div class="attributes-container">
+                        <div class="attributes">
+                            <label class="attribute">{{ person.name }}</label>
+                            <label class="bold-attribute">{{ person.role }}</label>
+                            <label class="attribute">{{ person.city }}</label>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="tarmac-people.js"></script>
+    </body>
+</html>
